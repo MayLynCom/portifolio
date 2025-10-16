@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Projeto 1 — Marketing</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="projeto.css" />
+    <meta name="description" content="Página padrão para detalhar projetos do portifólio." />
+  </head>
+  <body>
+    <!-- Cabeçalho igual ao index -->
+    <header class="site-header" aria-label="Navegação principal">
+      <div class="container nav">
+        <div class="brand" aria-label="Marca"><a href="index.html#inicio">Portifólio</a></div>
+        <nav class="nav-links">
+          <a href="#inicio">Início</a>
+          <a href="#Analise">Análise</a>
+          <a href="#Visualizacao">Visualização</a>
+          <a href="#Insights">Insights</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- Título do Projeto e Resumo/Objetivo -->
+      <section id="inicio" class="section page-hero" aria-label="Cabeçalho do projeto">
+        <div class="container">
+          <div class="page-hero-center">
+            <h1 class="page-title">O que gera mais conversão e onde alocar verba para maximizar ROI.</h1>
+            <p class="page-subtitle">Extraí o dataset do Kaggle, tratei e normalizei no Power Query e 
+              conduzi a análise com Information Value (IV) para medir quais variáveis mais explicam a conversão (alvo binário).
+              Montei um dashboard no Power BI para uma melhor visualização e dar insights sobre o negócio.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Análise: imagem + descrição -->
+      <section id="Analise" class="section" aria-label="Análise">
+        <div class="container about-grid">
+          <div class="about-media">
+            <img src="assets/project-analysis.svg" alt="Imagem representando a análise" />
+          </div>
+          <div class="about-text">
+            <h3>Análise</h3>
+            <p>
+              Descreva o processo analítico: limpeza, transformação, métricas usadas, testes estatísticos, segmentações
+              e principais descobertas intermediárias. Contextualize por que cada etapa ajuda a responder o objetivo.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Visualização: imagem + descrição -->
+      <section id="Visualizacao" class="section" aria-label="Visualização de Dados">
+        <div class="container about-grid">
+          <div class="about-media">
+            <img src="assets/project-viz.svg" alt="Imagem representando a visualização de dados" />
+          </div>
+          <div class="about-text">
+            <h3>Visualização de Dados</h3>
+            <p>
+              Explique as escolhas de visualização, filtros, KPIs e como o dashboard apoia a tomada de decisão. Destaque
+              as interações e como interpretar os gráficos principais.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Insight final: resposta ao objetivo do projeto -->
+      <section id="Insights" class="section contact insight" aria-label="Insight">
+        <div class="container contact-inner">
+          <h3>Insight</h3>
+          <p>
+            Responda de forma direta o objetivo do projeto, sintetizando a principal conclusão e implicações práticas.
+            Se houver próximos passos, liste-os brevemente.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <small>© 2025 Maycon Lyncon — Todos os direitos reservados.</small>
+      </div>
+    </footer>
+  </body>
+  </html>

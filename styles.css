@@ -35,9 +35,12 @@ img { display: block; max-width: 100%; height: auto; }
   margin-inline: auto;
 }
 
+/* Utilitários */
+.text-center { text-align: center; }
+
 .section { padding: 96px 0; }
 .section h3 {
-  font-size: clamp(1.5rem, 1.2rem + 1.2vw, 2rem);
+  font-size: clamp(1.75rem, 1.2rem + 1.4vw, 2.25rem);
   margin: 0 0 20px 0;
 }
 
@@ -62,6 +65,8 @@ img { display: block; max-width: 100%; height: auto; }
   letter-spacing: 1px;
   color: var(--text);
 }
+.brand a { color: inherit; text-decoration: none;}
+
 .nav-links { display: flex; gap: clamp(12px, 2vw, 28px); }
 .nav-links a {
   color: var(--muted);
@@ -154,6 +159,32 @@ img { display: block; max-width: 100%; height: auto; }
 .about-text p { color: var(--muted); }
 .about-text p + p { margin-top: 10px; }
 
+
+
+/* Visualização de Dados */
+.visu-text{
+  flex: 1;
+  max-width: 60ch;
+}
+
+/* Bloco da imagem vai pra direita */
+.visu-media{
+  margin-left: auto;                     /* empurra para a direita */
+  order: 2;                              /* garante que venha depois do texto */
+}
+
+.visu-media img{
+  display: block;
+  max-width: min(42vw, 520px);
+  height: auto;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+
+
+
+
 /* Habilidades */
 .chip-grid {
   list-style: none;
@@ -210,9 +241,80 @@ img { display: block; max-width: 100%; height: auto; }
   .hero { padding-top: 120px; }
   .project-grid { grid-template-columns: repeat(2, 1fr); }
 }
-@media (max-width: 640px) {
-  .nav-links { gap: 10px; }
-  .project-grid { grid-template-columns: 1fr; }
-  .section { padding: 72px 0; }
+
+/* Páginas de Projeto */
+.page-hero {
+  padding-top: 140px;
+  padding-bottom: 0;
+  /* centraliza verticalmente o cabeçalho do projeto sem afetar o index */
+  min-height: calc(100dvh - 140px);
+  display: flex;
+  align-items: center;
+}
+.page-hero .container {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  text-align: center;
+}
+.page-title {
+  margin: 0 0 6px 0;
+  font-size: clamp(2rem, 1.2rem + 3.2vw, 3rem);
+  font-weight: 800;
+}
+.page-subtitle { color: var(--muted); margin: 0; max-width: 70ch; }
+.back-row { 
+  margin: 0 0 16px 0;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
+/* Estilo específico da página projeto1 */
+#inicio .page-subtitle { 
+  text-align: center; 
+  margin-left: auto; 
+  margin-right: auto; 
+  margin-top: 20px;
+}
+
+/* Título Insight centralizado apenas na página de projeto */
+.insight h3 { text-align: center; }
+.back-row .btn { padding: 8px 12px; font-weight: 600; }
+
+@media (max-width: 640px) {
+  .page-hero { padding-top: 120px; }
+  .page-title, .page-subtitle { text-align: center; }
+}
+@media (max-width: 640px) {
+  /* Hero: foto acima do texto */
+  .hero-grid { display: flex; flex-direction: column-reverse; }
+  /* Header centralizado e sem links */
+  .nav { justify-content: center; }
+  .nav-links { display: none; }
+  .brand { text-align: center; }
+
+  /* Títulos e textos centralizados */
+  .section { padding: 72px 0; }
+  .section h3 { text-align: center; }
+
+  /* Hero centralizado */
+  .hero-text { text-align: center; }
+  .cta-row { justify-content: center; }
+
+  /* Sobre centralizado */
+  .about-text { text-align: center; }
+  .about-media { display: grid; place-items: center; }
+
+  /* Habilidades centralizadas */
+  .chip-grid { justify-content: center; }
+
+  /* Projetos responsivo 1 coluna */
+  .project-grid { grid-template-columns: 1fr; }
+
+  /* Contato centralizado */
+  .contact-inner { margin-inline: auto; text-align: center; }
+
+  /* Footer centralizado */
+  .site-footer .container { text-align: center; }
+}
