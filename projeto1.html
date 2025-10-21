@@ -39,13 +39,27 @@
       <section id="Analise" class="section" aria-label="Análise">
         <div class="container about-grid">
           <div class="about-media">
-            <img src="assets/project-analysis.svg" alt="Imagem representando a análise" />
+            <div class="carousel" tabindex="0" aria-roledescription="carousel">
+              <div class="carousel-track">
+                <img src="assets/IV (1).png" alt="Imagem representando a análise" />
+                <img src="assets/IV (2).png" alt="Imagem representando a análise" />
+                <img src="assets/IV (3).png" alt="Imagem representando a análise" />
+                <img src="assets/IV (4).png" alt="Imagem representando a análise" />
+                <img src="assets/IV (5).png" alt="Imagem representando a análise" />
+                <img src="assets/IV (6).png" alt="Imagem representando a análise" />
+                <img src="assets/IV (7).png" alt="Imagem representando a análise" />                
+                <!-- Adicione mais imagens duplicando a linha acima -->
+              </div>
+              <button class="carousel-btn prev" aria-label="Imagem anterior">&#10094;</button>
+              <button class="carousel-btn next" aria-label="Próxima imagem">&#10095;</button>
+              <div class="carousel-dots" aria-label="Seleção de imagem"></div>
+            </div>
           </div>
           <div class="about-text">
             <h3>Análise</h3>
             <p>
-              Descreva o processo analítico: limpeza, transformação, métricas usadas, testes estatísticos, segmentações
-              e principais descobertas intermediárias. Contextualize por que cada etapa ajuda a responder o objetivo.
+              Método: alvo binário + IV para ranquear variáveis. Achado: demografia/canal não explicam.
+              Quem manda é qualidade do tráfego e pós-clique: faixa de gasto, CTR, CVR da LP, visitas e tempo no site.
             </p>
           </div>
         </div>
@@ -54,15 +68,26 @@
       <!-- Visualização: imagem + descrição -->
       <section id="Visualizacao" class="section" aria-label="Visualização de Dados">
         <div class="container about-grid">
-          <div class="about-media">
-            <img src="assets/project-viz.svg" alt="Imagem representando a visualização de dados" />
-          </div>
           <div class="about-text">
             <h3>Visualização de Dados</h3>
             <p>
-              Explique as escolhas de visualização, filtros, KPIs e como o dashboard apoia a tomada de decisão. Destaque
-              as interações e como interpretar os gráficos principais.
+              Painel no Power BI com um único gráfico de Conversão.Os botões (Gasto, CTR, CVR, Visitas, Minutos) trocam a métrica no mesmo gráfico.
             </p>
+          </div>
+          <div class="about-media">
+            <div class="carousel" tabindex="0" aria-roledescription="carousel">
+              <div class="carousel-track">
+                <img src="assets/powerbi (0).png" alt="Imagem representando a visualização de dados" />
+                <img src="assets/powerbi (1).png" alt="Imagem representando a visualização de dados" />
+                <img src="assets/powerbi (2).png" alt="Imagem representando a visualização de dados" />
+                <img src="assets/powerbi (3).png" alt="Imagem representando a visualização de dados" />
+                <img src="assets/powerbi (4).png" alt="Imagem representando a visualização de dados" />
+                <!-- Adicione mais imagens duplicando a linha acima -->
+              </div>
+              <button class="carousel-btn prev" aria-label="Imagem anterior">&#10094;</button>
+              <button class="carousel-btn next" aria-label="Próxima imagem">&#10095;</button>
+              <div class="carousel-dots" aria-label="Seleção de imagem"></div>
+            </div>
           </div>
         </div>
       </section>
@@ -72,8 +97,9 @@
         <div class="container contact-inner">
           <h3>Insight</h3>
           <p>
-            Responda de forma direta o objetivo do projeto, sintetizando a principal conclusão e implicações práticas.
-            Se houver próximos passos, liste-os brevemente.
+            Alocar verba por conjunto em $5/6k: salto de conversão, acima de $6k o ganho é marginal.
+            Buscar CTR 10/15% (platô >20%) com criativos/segmentação. LP CVR 6/10% (mín. 6%) via higiene/UX.
+            Remarketing até ~10 visitas, depois retorno cai. Tempo 5/8 min já ajuda, >10 min pouco agrega. Otimizar CPA e escalar só com retorno marginal positivo.
           </p>
         </div>
       </section>
@@ -85,4 +111,63 @@
       </div>
     </footer>
   </body>
+  <script>
+    (function(){
+      function setupCarousel(root){
+        const scroller = root.querySelector('.carousel-track');
+        const slides = Array.from(scroller.children);
+        const prev = root.querySelector('.prev');
+        const next = root.querySelector('.next');
+        const dots = root.querySelector('.carousel-dots');
+        let index = 0;
+
+        if (slides.length <= 1) {
+          root.classList.add('is-single');
+        }
+
+        // Dots
+        slides.forEach((_, i) => {
+          const b = document.createElement('button');
+          b.type = 'button';
+          b.setAttribute('aria-label', 'Ir para imagem ' + (i+1));
+          b.addEventListener('click', () => goTo(i));
+          dots.appendChild(b);
+        });
+
+        function clamp(n, min, max){ return Math.max(min, Math.min(n, max)); }
+        function computeIndex(){
+          const w = scroller.clientWidth || 1;
+          return clamp(Math.round(scroller.scrollLeft / w), 0, slides.length - 1);
+        }
+        function updateActive(){
+          index = computeIndex();
+          Array.from(dots.children).forEach((b, i) => b.classList.toggle('active', i === index));
+          if (prev) prev.disabled = (index === 0);
+          if (next) next.disabled = (index === slides.length - 1);
+        }
+        function goTo(i){
+          const w = scroller.clientWidth;
+          index = clamp(i, 0, slides.length - 1);
+          scroller.scrollTo({ left: index * w, behavior: 'smooth' });
+        }
+        if (prev) prev.addEventListener('click', () => goTo(index - 1));
+        if (next) next.addEventListener('click', () => goTo(index + 1));
+
+        // Keyboard
+        root.addEventListener('keydown', (e) => {
+          if (e.key === 'ArrowLeft') { e.preventDefault(); goTo(index - 1); }
+          if (e.key === 'ArrowRight') { e.preventDefault(); goTo(index + 1); }
+        });
+
+        // Atualiza quando rolar e ao redimensionar
+        scroller.addEventListener('scroll', updateActive, { passive: true });
+        window.addEventListener('resize', updateActive);
+
+        // Inicializa estado
+        updateActive();
+      }
+
+      document.querySelectorAll('.carousel').forEach(setupCarousel);
+    })();
+  </script>
   </html>
