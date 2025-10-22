@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Projeto 3 — Marketing</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="projeto.css" />
+    <meta name="description" content="Página padrão para detalhar projetos do portifólio." />
+  </head>
+  <body>
+    <!-- Cabeçalho igual ao index -->
+    <header class="site-header" aria-label="Navegação principal">
+      <div class="container nav">
+        <div class="brand" aria-label="Marca"><a href="index.html#inicio">Portifólio</a></div>
+        <nav class="nav-links">
+          <a href="#inicio">Início</a>
+          <a href="#Analise">Análise</a>
+          <a href="#Visualizacao">Visualização</a>
+          <a href="#Insights">Insights</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- Título do Projeto e Resumo/Objetivo -->
+      <section id="inicio" class="section page-hero" aria-label="Cabeçalho do projeto">
+        <div class="container">
+          <div class="page-hero-center">
+            <h1 class="page-title">Descobrir o público-alvo dominante das compras e quais campanhas concentraram resultado.</h1>
+            <p class="page-subtitle">Extraí os dados do Kaggle (CSV), tratei no Power Query (correção de variáveis) e 
+              apliquei tabelas de frequência e gráficos de Pareto para identificar o público-alvo e as campanhas que mais vendem, 
+              gerando insights acionáveis para o time de marketing.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Análise: imagem + descrição -->
+      <section id="Analise" class="section" aria-label="Análise">
+        <div class="container about-grid">
+          <div class="about-media">
+            <div class="carousel" tabindex="0" aria-roledescription="carousel">
+              <div class="carousel-track">
+                <img src="assets/PowerbiMTK3 (1).png" alt="Imagem representando a análise 1" />
+                <img src="assets/PowerbiMTK3 (2).png" alt="Imagem representando a análise 1" />
+                <img src="assets/PowerbiMTK3 (3).png" alt="Imagem representando a análise 1" />
+                <img src="assets/PowerbiMTK3 (4).png" alt="Imagem representando a análise 1" />
+                <!-- Adicione mais imagens duplicando a linha acima -->
+              </div>
+              <button class="carousel-btn prev" aria-label="Imagem anterior">&#10094;</button>
+              <button class="carousel-btn next" aria-label="Próxima imagem">&#10095;</button>
+              <div class="carousel-dots" aria-label="Seleção de imagem"></div>
+            </div>
+          </div>
+          <div class="about-text">
+            <h3>Análise</h3>
+            <p>
+              Montei tabelas de frequência (absoluta, relativa e acumulada) para variáveis de perfil (escolaridade, estado civil, renda e filhos/adolescentes em casa) 
+              e compras por campanha. Construi gráficos de Pareto para cada variável (regra 80/20) e onde estão as concentrações que explicam a maior parte das vendas.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Visualização: imagem + descrição -->
+      <section id="Visualizacao" class="section" aria-label="Visualização de Dados">
+        <div class="container about-grid">
+          <div class="about-text">
+            <h3>Visualização de Dados</h3>
+            <p>
+              Usei no Power BI gráficos de Pareto por variável para aplicar a regra 80/20 e revelar as faixas que concentram a maior parte das vendas.
+              Os botões funcionam como filtros rápidos, ao clicar, exibem o Pareto da variável selecionada, facilitando comparar concentrações e priorizar onde pôr orçamento.
+            </p>
+          </div>
+          <div class="about-media">
+            <div class="carousel" tabindex="0" aria-roledescription="carousel">
+              <div class="carousel-track">
+                <img src="assets/powerbi mkt3.png" alt="Imagem representando a visualização de dados" />
+                <img src="assets/powerbi mkt3 (2).png" alt="Imagem representando a visualização de dados" />
+                <img src="assets/powerbi mkt3 (3).png" alt="Imagem representando a visualização de dados" />
+                <img src="assets/powerbi mkt3 (4).png" alt="Imagem representando a visualização de dados" />
+                <img src="assets/powerbi mkt3 (5).png" alt="Imagem representando a visualização de dados" />
+                <img src="assets/powerbi mkt3 (6).png" alt="Imagem representando a visualização de dados" />
+                <img src="assets/powerbi mkt3 (7).png" alt="Imagem representando a visualização de dados" />>
+                <!-- Adicione mais imagens duplicando a linha acima -->
+              </div>
+              <button class="carousel-btn prev" aria-label="Imagem anterior">&#10094;</button>
+              <button class="carousel-btn next" aria-label="Próxima imagem">&#10095;</button>
+              <div class="carousel-dots" aria-label="Seleção de imagem"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Insight final: resposta ao objetivo do projeto -->
+      <section id="Insights" class="section contact insight" aria-label="Insight">
+        <div class="container contact-inner">
+          <h3>Insight</h3>
+          <p>
+            Público alvo: nascidos 1963 até 1982, ensino superior (grad/PhD), casados/união estável ou solteiros, renda US$ 21,7k até 81,7k, nenhum ou somente 1 filho. 
+            Campanhas: 33% das compras vieram após 6 contatos (Última Campanha), as demais tiveram ~16% em média. Do 6º contato com cliente a conversão dobrou.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <small>© 2025 Maycon Lyncon — Todos os direitos reservados.</small>
+      </div>
+    </footer>
+  </body>
+  <script>
+    (function(){
+      function setupCarousel(root){
+        const scroller = root.querySelector('.carousel-track');
+        const slides = Array.from(scroller.children);
+        const prev = root.querySelector('.prev');
+        const next = root.querySelector('.next');
+        const dots = root.querySelector('.carousel-dots');
+        let index = 0;
+
+        if (slides.length <= 1) {
+          root.classList.add('is-single');
+        }
+
+        // Dots
+        slides.forEach((_, i) => {
+          const b = document.createElement('button');
+          b.type = 'button';
+          b.setAttribute('aria-label', 'Ir para imagem ' + (i+1));
+          b.addEventListener('click', () => goTo(i));
+          dots.appendChild(b);
+        });
+
+        function clamp(n, min, max){ return Math.max(min, Math.min(n, max)); }
+        function computeIndex(){
+          const w = scroller.clientWidth || 1;
+          return clamp(Math.round(scroller.scrollLeft / w), 0, slides.length - 1);
+        }
+        function updateActive(){
+          index = computeIndex();
+          Array.from(dots.children).forEach((b, i) => b.classList.toggle('active', i === index));
+          if (prev) prev.disabled = (index === 0);
+          if (next) next.disabled = (index === slides.length - 1);
+        }
+        function goTo(i){
+          const w = scroller.clientWidth;
+          index = clamp(i, 0, slides.length - 1);
+          scroller.scrollTo({ left: index * w, behavior: 'smooth' });
+        }
+        if (prev) prev.addEventListener('click', () => goTo(index - 1));
+        if (next) next.addEventListener('click', () => goTo(index + 1));
+
+        // Keyboard
+        root.addEventListener('keydown', (e) => {
+          if (e.key === 'ArrowLeft') { e.preventDefault(); goTo(index - 1); }
+          if (e.key === 'ArrowRight') { e.preventDefault(); goTo(index + 1); }
+        });
+
+        // Atualiza quando rolar e ao redimensionar
+        scroller.addEventListener('scroll', updateActive, { passive: true });
+        window.addEventListener('resize', updateActive);
+
+        // Inicializa estado
+        updateActive();
+      }
+
+      document.querySelectorAll('.carousel').forEach(setupCarousel);
+    })();
+  </script>
+  </html>
